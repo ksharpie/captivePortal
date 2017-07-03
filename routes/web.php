@@ -17,41 +17,23 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     // Only authenticated users may enter...
-    return view('home');
+    return view('advertisements');
 })->middleware('auth');
 
-/**
-    * Add New Task
-    */
-Route::post('/task', function (Request $request) {
-    error_log("INFO: post /task");
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|max:255',
-    ]);
+Route::get('/stores', function () {
+    // Only authenticated users may enter...
+    return view('stores');
+})->middleware('auth');
 
-    if ($validator->fails()) {
-        error_log("ERROR: Add task failed.");
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
+Route::post('/advertisements', function () {
+    // Only authenticated users may enter...
+    return view('advertisements');
+})->middleware('auth');
 
-    $task = new Task;
-    $task->name = $request->name;
-    $task->save();
-
-    return redirect('/');
-});
-
-/**
-    * Delete Task
-    */
-Route::delete('/task/{id}', function ($id) {
-    error_log('INFO: delete /task/'.$id);
-    Task::findOrFail($id)->delete();
-
-    return redirect('/');
-});
+Route::post('/stores', function () {
+    // Only authenticated users may enter...
+    return view('stores');
+})->middleware('auth');
 
 Auth::routes();
 

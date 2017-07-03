@@ -58,6 +58,16 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a>
+                                            Create Advertisement
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            Add Store
+                                        </a>
+                                    </li>   
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -75,7 +85,7 @@
                 </div>
             </div>
         </nav>
-
+        @yield('navbar')
         @yield('content')
     </div>
 

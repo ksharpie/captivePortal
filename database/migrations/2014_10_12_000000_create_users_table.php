@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
         });
 
         User::create([
-            'name' => 'admin',
+            'name' => 'Administrator',
             'email' => 'admin@syncontechnologies.com',
             'password' => bcrypt('admin'),
         ]);
