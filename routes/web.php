@@ -14,26 +14,51 @@
 use App\Task;
 use Illuminate\Http\Request;
 
-
+/*
+    Routes used to view items which exist
+ */
 Route::get('/', function () {
-    // Only authenticated users may enter...
-    return view('advertisements');
+    return view('advertisements/list');
 })->middleware('auth');
 
 Route::get('/stores', function () {
-    // Only authenticated users may enter...
-    return view('stores');
+
+    return view('stores/list');
 })->middleware('auth');
 
+/*
+    Routes used to create items
+ */
 Route::post('/advertisements', function () {
-    // Only authenticated users may enter...
     return view('advertisements');
 })->middleware('auth');
 
 Route::post('/stores', function () {
-    // Only authenticated users may enter...
     return view('stores');
 })->middleware('auth');
+
+/*
+    Routes used to edit items
+ */
+Route::put('/advertisements', function () {
+    return view('advertisements');
+})->middleware('auth');
+
+Route::put('/stores', function () {
+    return view('stores');
+})->middleware('auth');
+
+/*
+    Routes used to delete items
+ */
+Route::delete('/advertisements', function () {
+    return view('advertisements/list');
+})->middleware('auth');
+
+Route::delete('/stores', function () {
+    return view('stores/list');
+})->middleware('auth');
+
 
 Auth::routes();
 

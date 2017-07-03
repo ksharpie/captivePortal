@@ -17,6 +17,7 @@ class CreateStoresTable extends Migration
             $table->increments('id');
             $table->string('company_name');
             $table->string('service_description');
+            $table->string('telephone_number');
             $table->string('website');
             $table->timestamps();
         });
