@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <!-- Display Validation Errors -->
+                    <!-- Display Validation Erro  rs -->
                     @include('common.errors')
 
                     <!-- New Task Form -->
