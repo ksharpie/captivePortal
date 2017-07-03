@@ -14,15 +14,11 @@
 use App\Task;
 use Illuminate\Http\Request;
 
-/**
-    * Show Task Dashboard
-    */
+
 Route::get('/', function () {
-    error_log("INFO: get /");
-    return view('tasks', [
-        'tasks' => Task::orderBy('created_at', 'asc')->get()
-    ]);
-});
+    // Only authenticated users may enter...
+    return view('home');
+})->middleware('auth');
 
 /**
     * Add New Task
@@ -56,3 +52,7 @@ Route::delete('/task/{id}', function ($id) {
 
     return redirect('/');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
