@@ -15,9 +15,12 @@ class CreateAdvertisementsTable extends Migration
     {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_name');
-            $table->string('offer');
-            $table->timestamp('expiry_date')->index();
+            $table->string('company_name')->nullable('');
+            $table->string('offer')->nullable('');
+            $table->string('category')->nullable('');
+            $table->boolean('has_logo')->default(false);
+            $table->string('logo_path')->nullable('');
+            $table->datetime('expiry_date')->index();
             $table->timestamps();
         });
     }

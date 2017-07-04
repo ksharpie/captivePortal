@@ -8,7 +8,7 @@
                 <div class="panel-heading">
                     <ul class="nav nav-pills">
                         <li role="presentation"><a href="/">Advertisements</a></li>
-                        <li role="presentation"><a href="/stores">Stores</a></li>
+                        <li role="presentation" class="active"><a href="/stores">Stores</a></li>
                     </ul>
                 </div>
 
@@ -23,12 +23,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Kentucky Fried Chicken</td>
-                          <td>We Sell Fried Chicken</td>
-                          <td>1876-565-7693</td>
-                          <td>kfc.jm.com</td>
-                        </tr>
+                        @foreach ($stores as $store)
+                          <tr>
+                            <td><a href="/stores/{{$store->id}}">{{ $store->company_name }}</a></td>
+                            <td><a href="/stores/{{$store->id}}">{{ $store->service_description }}</a></td>
+                            <td><a href="/stores/{{$store->id}}">{{ $store->telephone_number }}</a></td>
+                            <td><a href="/stores/{{$store->id}}">{{ $store->website }}</a></td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                 </div>

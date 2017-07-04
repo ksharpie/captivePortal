@@ -58,15 +58,15 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a>
+                                        <a href="/new-advertisement">
                                             Create Advertisement
                                         </a>
                                     </li>
                                     <li>
-                                        <a>
+                                        <a href="/new-store">
                                             Add Store
                                         </a>
-                                    </li>   
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

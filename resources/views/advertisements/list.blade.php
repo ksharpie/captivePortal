@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <ul class="nav nav-pills">
-                        <li role="presentation"><a href="/">Advertisements</a></li>
+                        <li role="presentation" class="active"><a href="/">Advertisements</a></li>
                         <li role="presentation"><a href="/stores">Stores</a></li>
                     </ul>
                 </div>
@@ -23,12 +23,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Kentucky Fried Chicken</td>
-                          <td>20% off all fried chicken</td>
-                          <td>20/6/2017</td>
-                          <td>Picture</td>
-                        </tr>
+                        @foreach ($advertisements as $advertisement)
+                          <tr>
+                            <td><a href="/advertisements/{{$advertisement->id}}">{{ $advertisement->company_name }}</a></td>
+                            <td><a href="/advertisements/{{$advertisement->id}}">{{ $advertisement->offer }}</a></td>
+                            <td><a href="/advertisements/{{$advertisement->id}}">{{ $advertisement->expiry_date }}</a></td>
+                            <td><a href="/advertisements/{{$advertisement->id}}">{{ $advertisement->category }}</a></td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                 </div>

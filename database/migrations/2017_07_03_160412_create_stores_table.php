@@ -19,6 +19,8 @@ class CreateStoresTable extends Migration
             $table->string('service_description');
             $table->string('telephone_number');
             $table->string('website');
+            $table->boolean('has_logo');
+            $table->string('logo_path');
             $table->timestamps();
         });
     }
