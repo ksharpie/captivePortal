@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use App\Advertisement;
+use App\Store;
+use Auth;
 use Illuminate\Support\Facades\Log;
 
 class AdvertisementsController extends Controller
 {
     public function index(){
-        $advertisements = Advertisement::all();
+        $advertisements = Advertisement::join('stores', 'advertisements.store_id', '=', 'stores.id')
+            ->select('stores.company_name', 'advertisements.id', 'advertisements.offer', 'advertisements.expiry_date', 'advertisements.category')
+            ->getQuery()
+            ->get();
+
         return view('advertisements.list', compact('advertisements'));
     }
 
@@ -19,13 +25,16 @@ class AdvertisementsController extends Controller
         if($advertisement->has_logo){
             $advertisement->logo_path = asset('storage/' . $advertisement->logo_path);
         }
-        return view('advertisements.view', compact('advertisement'));
+
+        $stores = Store::all();
+
+        return view('advertisements.view', compact('advertisement', 'stores'));
     }
 
     public function create(Request $request){
 
         $this->validate($request, [
-            'company_name' => 'required|max:255',
+            'store_id' => 'required|max:255',
             'offer' => 'required',
             'expiry_date' => 'required|date',
             'category' => 'required',
@@ -44,31 +53,30 @@ class AdvertisementsController extends Controller
           $advertisement['has_logo'] = false;
         }
 
+        $advertisement['created_by'] = Auth::user()->id;
+
         $advertisement = Advertisement::create($advertisement);
 
-        return $advertisement;
+        return $this->index();
     }
 
     public function edit(Request $request, Advertisement $advertisement){
 
         $advertisement->update($request->all());
 
-        $advertisements = Advertisement::all();
-
-        return view('advertisements.list', compact('advertisements'));
+        return $this->index();
 
     }
 
     public function delete(Advertisement $advertisement){
         $advertisement->delete();
 
-        $advertisements = Advertisement::all();
+        return $this->index();
 
-        return view('advertisements.list', compact('advertisements'));
     }
 
     public function loadCreateAdvertisementPage(){
-
-        return view('advertisements.new');
+        $stores = Store::all();
+        return view('advertisements.new', compact('stores'));
     }
 }

@@ -20,10 +20,14 @@
                       </div>
                       <div class="form-group required">
                         <label for="locationId" class="control-label">Company Location</label>
-                        <select class="form-control" id="locationId" name="location_id" value="{{ old('location_id')}}">
+                        <select class="form-control" id="locationId" name="location_id">
                           <option value="">Please select a location</option>
                           @foreach ($locations as $location)
-                            <option value="{{ $location->id }}">{{ $location->location_name }}</option>
+                            @if ($location->id == old('location_id'))
+                              <option value="{{ $location->id }}" selected="selected">{{ $location->location_name }}</option>
+                            @else
+                              <option value="{{ $location->id }}">{{ $location->location_name }}</option>
+                            @endif
                           @endforeach
                         </select>
                         <div class="form-text text-muted">@if (array_key_exists('location_id', $errors->toArray())) {{ $errors->toArray()['location_id'][0] }} @endif</div>

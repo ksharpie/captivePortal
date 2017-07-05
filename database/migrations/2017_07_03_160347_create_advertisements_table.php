@@ -15,7 +15,7 @@ class CreateAdvertisementsTable extends Migration
     {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_name')->nullable('');
+            $table->integer('store_id')->nullable('');
             $table->string('offer')->nullable('');
             $table->string('category')->nullable('');
             $table->boolean('has_logo')->default(false);

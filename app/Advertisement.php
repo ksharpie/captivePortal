@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Advertisement extends Model
 {
     protected $fillable = [
-        'company_name',
+        'store_id',
         'offer',
         'category',
         'expiry_date',
         'has_logo',
         'logo_path',
+        'created_by',
     ];
 }

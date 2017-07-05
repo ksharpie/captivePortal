@@ -18,9 +18,19 @@
 
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                      <div class="form-group">
-                        <label for="companyName">Company Name</label>
-                        <input type="text" class="form-control" id="companyName" name="company_name" value="{{ $advertisement->company_name }}">
+                      <div class="form-group required">
+                        <label for="companyName" class="control-label">Company</label>
+                        <select type="text" class="form-control" id="companyName" name="store_id">
+                          <option value="">Please select a company</option>
+                          @foreach ($stores as $store)
+                            @if ($store->id == $advertisement->store_id)
+                              <option value="{{ $store->id }}" selected="selected">{{ $store->company_name }}</option>
+                            @else
+                              <option value="{{ $store->id }}">{{ $store->company_name }}</option>
+                            @endif
+                          @endforeach
+                        </select>
+                        <div class="form-text text-muted">@if (array_key_exists('store_id', $errors->toArray())) {{ $errors->toArray()['store_id'][0] }} @endif</div>
                       </div>
                       <div class="form-group">
                         <label for="offer">Offer</label>

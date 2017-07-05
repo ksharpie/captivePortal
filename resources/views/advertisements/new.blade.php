@@ -13,13 +13,20 @@
                   <div class="panel-body">
                     <form method="POST" action="/new-advertisement" enctype="multipart/form-data">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                       <div class="form-group required">
-                        <label for="companyName" class="control-label">Company Name</label>
-                        <input type="text" class="form-control" id="companyName" name="company_name" value="{{ old('company_name')}}">
-                        <div class="form-text text-muted">@if (array_key_exists('company_name', $errors->toArray())) {{ $errors->toArray()['company_name'][0] }} @endif</div>
+                        <label for="companyName" class="control-label">Company</label>
+                        <select type="text" class="form-control" id="companyName" name="store_id">
+                          <option value="">Please select a company</option>
+                          @foreach ($stores as $store)
+                            @if ($store->id == old('store_id'))
+                              <option value="{{ $store->id }}" selected="selected">{{ $store->company_name }}</option>
+                            @else
+                              <option value="{{ $store->id }}">{{ $store->company_name }}</option>
+                            @endif
+                          @endforeach
+                        </select>
+                        <div class="form-text text-muted">@if (array_key_exists('store_id', $errors->toArray())) {{ $errors->toArray()['store_id'][0] }} @endif</div>
                       </div>
-
                       <div class="form-group required">
                         <label for="offer" class="control-label">Offer</label>
                         <textarea class="form-control" id="offer" rows="3" name="offer">{{ old('offer')}}</textarea>
