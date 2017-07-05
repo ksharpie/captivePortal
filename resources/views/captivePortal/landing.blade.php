@@ -113,11 +113,9 @@
   //
   // });
 
-  $(document).on("pagecreate","#pageone",function(){
-  $("#carousel").on("swipe",function(){
+  $("#myCarousel").on("swipe",function(){
 
     $(this).carousel('next');
-    
+
   });
-});
 </script>
