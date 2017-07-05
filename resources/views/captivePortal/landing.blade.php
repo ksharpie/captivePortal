@@ -108,7 +108,7 @@
       if (direction == 'right') $(this).carousel('prev');
 
 
-    },
+     },
     allowPageScroll:"vertical"
 
   });
