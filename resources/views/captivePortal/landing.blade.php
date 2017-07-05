@@ -24,7 +24,7 @@
       <div class="active item">
         <img style="1000px" src="https://garyconklinglifenotes.files.wordpress.com/2014/01/really-big-tree.jpg" alt="Los Angeles">
         <div class="carousel-caption">
-          <h3>Los Angeles</h3>
+          <h3>Los</h3>
           <p>LA is always so much fun!</p>
         </div>
       </div>
@@ -40,7 +40,7 @@
       <div class="item">
         <img src="https://livelyplanet.ru/uploads/posts/2017-04/1492001895_vankuver-kanada.jpeg" alt="New york">
         <div class="carousel-caption">
-          <h3>Los Angeles</h3>
+          <h3>Los</h3>
           <p>LA is always so much fun!</p>
         </div>
       </div>
