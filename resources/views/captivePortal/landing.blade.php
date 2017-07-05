@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  {{-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> --}}
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
 
@@ -24,7 +28,7 @@
       <div class="active item">
         <img style="1000px" src="https://garyconklinglifenotes.files.wordpress.com/2014/01/really-big-tree.jpg" alt="Los Angeles">
         <div class="carousel-caption">
-          <h3>Los</h3>
+          <h3>America</h3>
           <p>LA is always so much fun!</p>
         </div>
       </div>
@@ -40,7 +44,7 @@
       <div class="item">
         <img src="https://livelyplanet.ru/uploads/posts/2017-04/1492001895_vankuver-kanada.jpeg" alt="New york">
         <div class="carousel-caption">
-          <h3>Los</h3>
+          <h3>America</h3>
           <p>LA is always so much fun!</p>
         </div>
       </div>
@@ -100,22 +104,12 @@
   }
 </style>
 <script>
-  // $("#carousel").swipe({
-  //
-  //   swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-  //
-  //     if (direction == 'left') $(this).carousel('next');
-  //     if (direction == 'right') $(this).carousel('prev');
-  //
-  //
-  //    },
-  //   allowPageScroll:"vertical"
-  //
-  // });
-
-  $("#myCarousel").on("swipe",function(){
-
-    $(this).carousel('next');
-
-  });
+$(document).ready(function() {
+   $("#myCarousel").swiperight(function() {
+      $(this).carousel('prev');
+    });
+   $("#myCarousel").swipeleft(function() {
+      $(this).carousel('next');
+   });
+});
 </script>
