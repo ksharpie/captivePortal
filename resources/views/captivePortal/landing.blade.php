@@ -100,16 +100,24 @@
   }
 </style>
 <script>
-  $(".carousel").swipe({
+  // $("#carousel").swipe({
+  //
+  //   swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+  //
+  //     if (direction == 'left') $(this).carousel('next');
+  //     if (direction == 'right') $(this).carousel('prev');
+  //
+  //
+  //    },
+  //   allowPageScroll:"vertical"
+  //
+  // });
 
-    swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+  $(document).on("pagecreate","#pageone",function(){
+  $("#carousel").on("swipe",function(){
 
-      if (direction == 'left') $(this).carousel('next');
-      if (direction == 'right') $(this).carousel('prev');
-
-
-     },
-    allowPageScroll:"vertical"
-
+    $(this).carousel('next');
+    
   });
+});
 </script>
