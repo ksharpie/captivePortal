@@ -22,7 +22,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="active item">
-        <img src="https://garyconklinglifenotes.files.wordpress.com/2014/01/really-big-tree.jpg" alt="Los Angeles">
+        <img style="1000px" src="https://garyconklinglifenotes.files.wordpress.com/2014/01/really-big-tree.jpg" alt="Los Angeles">
         <div class="carousel-caption">
           <h3>Los Angeles</h3>
           <p>LA is always so much fun!</p>
@@ -66,6 +66,10 @@
 <style>
   html,body{
     height:100%;
+  }
+  .carousel-inner > .item > img {
+    width: 100vw;
+    height: 100vh;
   }
   .carousel,.item,.active{
     height:100%;
