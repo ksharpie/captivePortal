@@ -24,6 +24,14 @@ class AdvertisementsController extends Controller
 
     public function create(Request $request){
 
+        $this->validate($request, [
+            'company_name' => 'required|max:255',
+            'offer' => 'required',
+            'expiry_date' => 'required|date',
+            'category' => 'required',
+            'advertisement_logo' => 'required|image',
+        ]);
+
         $advertisement = $request->toArray();
 
         if($request->hasFile('advertisement_logo')){
@@ -57,5 +65,10 @@ class AdvertisementsController extends Controller
         $advertisements = Advertisement::all();
 
         return view('advertisements.list', compact('advertisements'));
+    }
+
+    public function loadCreateAdvertisementPage(){
+
+        return view('advertisements.new');
     }
 }

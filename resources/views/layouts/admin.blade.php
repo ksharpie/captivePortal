@@ -55,16 +55,15 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/new-advertisement">
-                                            Create Advertisement
+                                        <a href="/locations">
+                                            Manage Locations
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/new-store">
-                                            Add Store
+                                        <a href="/users">
+                                            Manage Users
                                         </a>
                                     </li>
                                     <li>
@@ -93,3 +92,10 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
+
+<style>
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+</style>

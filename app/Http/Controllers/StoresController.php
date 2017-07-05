@@ -6,12 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
 use App\Store;
+use App\Location;
+use Auth;
 
 class StoresController extends Controller
 {
     public function index(){
 
-          $stores = Store::all();
+          $stores = Store::join('locations', 'stores.location_id', '=', 'locations.id')
+                        ->select('locations.location_name', 'stores.company_name', 'stores.service_description', 'stores.id', 'stores.telephone_number', 'stores.website')
+                        ->getQuery()
+                        ->get();
+
           return view('stores.list', compact('stores'));
     }
 
@@ -21,10 +27,21 @@ class StoresController extends Controller
             $store->logo_path = asset('storage/' . $store->logo_path);
         }
 
-        return view('stores.view', compact('store'));
+        $locations = Location::all();
+
+        return view('stores.view', compact('store', 'locations'));
     }
 
     public function create(Request $request){
+
+        $this->validate($request, [
+            'company_name' => 'required|unique:stores|max:255',
+            'service_description' => 'required',
+            'telephone_number' => 'required|max:15',
+            'website' => 'required',
+            'company_logo' => 'required|image',
+            'location_id' => 'required|exists:locations,id'
+        ]);
 
         $store = $request->toArray();
 
@@ -36,24 +53,38 @@ class StoresController extends Controller
             $store['has_logo'] = false;
         }
 
+        $store['created_by'] = Auth::user()->id;
+
         $store = Store::create($store);
 
-        return $store;
+        return $this->index();
     }
 
     public function edit(Request $request, Store $store){
 
+        $this->validate($request, [
+            'company_name' => 'required|max:255',
+            'service_description' => 'required',
+            'telephone_number' => 'required|max:15',
+            'website' => 'required',
+        ]);
+
         $store->update($request->all());
 
-        return back();
+        return $this->index();
 
     }
 
     public function delete(Store $store){
       $store->delete();
 
-      $stores = Store::all();
+      return $this->index();
+    }
 
-      return view('stores.list', compact('stores'));
+    public function loadCreateStorePage(){
+
+        $locations = Location::all();
+
+        return view('stores.new', compact('locations'));
     }
 }

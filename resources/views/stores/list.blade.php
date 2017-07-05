@@ -9,6 +9,7 @@
                     <ul class="nav nav-pills">
                         <li role="presentation"><a href="/">Advertisements</a></li>
                         <li role="presentation" class="active"><a href="/stores">Stores</a></li>
+                        <li role="presentation" class="text-right pull-right"><a href="/new-store">Add Store</a></li>
                     </ul>
                 </div>
 
@@ -20,6 +21,7 @@
                           <th>Service Description</th>
                           <th>Telephone Number</th>
                           <th>Website</th>
+                          <th>Location</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -29,6 +31,7 @@
                             <td><a href="/stores/{{$store->id}}">{{ $store->service_description }}</a></td>
                             <td><a href="/stores/{{$store->id}}">{{ $store->telephone_number }}</a></td>
                             <td><a href="/stores/{{$store->id}}">{{ $store->website }}</a></td>
+                            <td><a href="/stores/{{$store->id}}">{{ $store->location_name }}</a></td>
                           </tr>
                         @endforeach
                       </tbody>

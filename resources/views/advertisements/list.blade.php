@@ -9,6 +9,7 @@
                     <ul class="nav nav-pills">
                         <li role="presentation" class="active"><a href="/">Advertisements</a></li>
                         <li role="presentation"><a href="/stores">Stores</a></li>
+                        <li role="presentation" class="text-right pull-right"><a href="/new-advertisement">Create Advertisement</a></li>
                     </ul>
                 </div>
 

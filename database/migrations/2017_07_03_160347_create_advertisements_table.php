@@ -21,6 +21,7 @@ class CreateAdvertisementsTable extends Migration
             $table->boolean('has_logo')->default(false);
             $table->string('logo_path')->nullable('');
             $table->datetime('expiry_date')->index();
+            $table->integer('created_by');
             $table->timestamps();
         });
     }

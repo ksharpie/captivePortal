@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Location;
 
 class Store extends Model
 {
@@ -13,5 +14,7 @@ class Store extends Model
       'website',
       'has_logo',
       'logo_path',
+      'created_by',
+      'location_id',
   ];
 }
