@@ -24,7 +24,7 @@ class StoresController extends Controller
     public function view(Store $store){
 
         if($store->has_logo){
-            $store->logo_path = asset('storage/' . $store->logo_path);
+            $store->logo_path = 'https://merakiwalledgarden2.blob.core.windows.net/advertisement-logos/' . $store->logo_path;
         }
 
         $locations = Location::all();
@@ -46,7 +46,7 @@ class StoresController extends Controller
         $store = $request->toArray();
 
         if($request->hasFile('company_logo')){
-            $path = $request->file('company_logo')->store('companyLogos', 'public');
+            $path = $request->file('company_logo')->store('', 'azure');
             $store['has_logo'] = true;
             $store['logo_path'] = $path;
         }else{

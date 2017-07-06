@@ -1,12 +1,10 @@
 <?php
 namespace App\Providers;
-
 use Storage;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Azure\AzureAdapter;
 use WindowsAzure\Common\ServicesBuilder;
-
 class AzureStorageServiceProvider extends ServiceProvider
 {
     /**
@@ -18,7 +16,7 @@ class AzureStorageServiceProvider extends ServiceProvider
     {
         Storage::extend('azure', function($app, $config) {
             $endpoint = sprintf(
-                'DefaultEndpointsProtocol=https;AccountName=merakiwalledgarden2;AccountKey=9pUn+eWrQnFGPTAkXqwRJF8s8Ffj8UtwymVhImZb1+fqOqbmzYS5zlPMJ2FYutPv9shV/fsn9/evm7ZbviIgKw==',
+                'DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s',
                 $config['name'],
                 $config['key']
             );

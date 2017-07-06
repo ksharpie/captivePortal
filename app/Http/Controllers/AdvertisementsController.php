@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use App\Advertisement;
 use App\Store;
 use Auth;
+use Storage;
 use Illuminate\Support\Facades\Log;
 
 class AdvertisementsController extends Controller
@@ -23,7 +25,7 @@ class AdvertisementsController extends Controller
     public function view(Advertisement $advertisement){
 
         if($advertisement->has_logo){
-            $advertisement->logo_path = asset('storage/' . $advertisement->logo_path);
+            $advertisement->logo_path = 'https://merakiwalledgarden2.blob.core.windows.net/advertisement-logos/' . $advertisement->logo_path;
         }
 
         $stores = Store::all();
@@ -31,7 +33,7 @@ class AdvertisementsController extends Controller
         return view('advertisements.view', compact('advertisement', 'stores'));
     }
 
-    public function create(Request $request){
+    public function create(Request $request, Filesystem $filesystem){
 
         $this->validate($request, [
             'store_id' => 'required|max:255',
@@ -45,9 +47,10 @@ class AdvertisementsController extends Controller
 
         if($request->hasFile('advertisement_logo')){
 
-          $path = $request->file('advertisement_logo')->store('advertisementLogos', 'public');
-          $advertisement['has_logo'] = true;
-          $advertisement['logo_path'] = $path;
+            $path = $request->file('advertisement_logo')->store('', 'azure');
+
+            $advertisement['has_logo'] = true;
+            $advertisement['logo_path'] = $path;
 
         }else{
           $advertisement['has_logo'] = false;

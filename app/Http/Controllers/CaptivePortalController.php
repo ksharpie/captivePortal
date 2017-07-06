@@ -19,7 +19,7 @@ class CaptivePortalController extends Controller
         foreach ($advertisements as $advertisement)
         {
             if($advertisement->has_logo){
-                $advertisement->logo_path = asset('storage/' . $advertisement->logo_path);
+                $advertisement->logo_path = 'https://merakiwalledgarden2.blob.core.windows.net/advertisement-logos/' . $advertisement->logo_path;
             }
         }
 
