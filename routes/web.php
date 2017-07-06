@@ -49,6 +49,6 @@ Route::get('/stores/delete/{store}', 'StoresController@delete')->middleware('aut
 Route::get('/users/delete/{user}', 'UsersController@delete')->middleware('auth');
 Route::get('/locations/delete/{location}', 'LocationsController@delete')->middleware('auth');
 
-Route:: get('/captiveportal', 'CaptivePortalController@index');
+Route:: get('/captiveportal/{location}', 'CaptivePortalController@index');
 
 Auth::routes();
