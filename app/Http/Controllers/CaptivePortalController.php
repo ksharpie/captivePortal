@@ -9,6 +9,8 @@ class CaptivePortalController extends Controller
 {
     public function index(Request $request, $location){
 
+        $data = $request->all();
+
         $advertisements = Advertisement::join('stores', 'advertisements.store_id', '=', 'stores.id')
                         ->join('locations', 'stores.location_id', '=', 'locations.id')
                         ->select('stores.company_name', 'advertisements.offer', 'advertisements.expiry_date', 'advertisements.has_logo', 'advertisements.logo_path')
@@ -25,6 +27,10 @@ class CaptivePortalController extends Controller
 
         $initialAdvertisement = mt_rand(0,count($advertisements)-1);
 
-        return view('captivePortal.landing', compact('advertisements', 'initialAdvertisement'));
+        $clickThroughURL = $data['base_grant_url'] . "?continue_url=" . $data['user_continue_url'] . "&duration=3600";
+
+        return view('captivePortal.landing', compact('advertisements', 'initialAdvertisement', 'clickThroughURL'));
+        // return $clickThroughURL;
+        // return $data;
     }
 }

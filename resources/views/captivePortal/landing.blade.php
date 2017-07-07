@@ -49,7 +49,7 @@
     </a>
   </div>
   <div id="fixedbutton">
-     <button type="button" class="btn btn-primary">Login</button>
+     <a href="{{ $clickThroughURL }}"><button type="button" class="btn btn-primary">Login</button></a>
   </div>
 </div>
 
