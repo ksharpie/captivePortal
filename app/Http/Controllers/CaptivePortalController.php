@@ -10,6 +10,8 @@ class CaptivePortalController extends Controller
     public function index(Request $request, $location){
 
         $data = $request->all();
+        $base_grant_url = isset($data['base_grant_url']) ? $data['base_grant_url']:'';
+        $user_continue_url = isset($data['user_continue_url']) ? $data['user_continue_url']:'';
 
         $advertisements = Advertisement::join('stores', 'advertisements.store_id', '=', 'stores.id')
                         ->join('locations', 'stores.location_id', '=', 'locations.id')
@@ -27,7 +29,7 @@ class CaptivePortalController extends Controller
 
         $initialAdvertisement = mt_rand(0,count($advertisements)-1);
 
-        $clickThroughURL = $data['base_grant_url'] . "?continue_url=" . $data['user_continue_url'] . "&duration=3600";
+        $clickThroughURL = $base_grant_url . "?continue_url=" . $user_continue_url . "&duration=3600";
 
         return view('captivePortal.landing', compact('advertisements', 'initialAdvertisement', 'clickThroughURL'));
         // return $clickThroughURL;
