@@ -34,7 +34,7 @@
           <img style="1000px" src="{{ $advertisements[$count]->logo_path }}" alt="{{ $advertisements[$count]->company_name }}">
           <div class="carousel-caption">
             <h3>{{ $advertisements[$count]->company_name }}</h3>
-            <p>{{ $advertisements[$count]->offer}} {{ $advertisements[$count]->expiry_date}}</p>
+            <p>{{ $advertisements[$count]->offer}} <br/> Offer Expires in {{ $advertisements[$count]->expires_in}}</p>
           </div>
         </div>
       @endfor

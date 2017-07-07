@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Advertisement;
+use Carbon\Carbon;
 
 class CaptivePortalController extends Controller
 {
@@ -25,6 +26,9 @@ class CaptivePortalController extends Controller
             if($advertisement->has_logo){
                 $advertisement->logo_path = 'https://merakiwalledgarden2.blob.core.windows.net/advertisement-logos/' . $advertisement->logo_path;
             }
+            $expirty_date = Carbon::createFromFormat('Y-m-d H', substr($advertisement->expiry_date,0,13));
+
+            $advertisement->expires_in = $expirty_date->diffForHumans(Carbon::now(),true);
         }
 
         $initialAdvertisement = mt_rand(0,count($advertisements)-1);
