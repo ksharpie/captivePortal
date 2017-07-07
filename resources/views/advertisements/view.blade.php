@@ -47,7 +47,7 @@
                       @if($advertisement->has_logo)
                         <div class="form-group">
                           <label for="website">Advertisement Logo</label><br/>
-                          <image src="{{$advertisement->logo_path}}" class="img-thumbnail" style="height:200px; width:200px;"></image>
+                          {{-- <image src="{{$advertisement->logo_path}}" class="img-thumbnail" style="height:200px; width:200px;"></image> --}}
                         </div>
                       @endif
                       <button type="submit" class="btn btn-primary">Save Changes</button>

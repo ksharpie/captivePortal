@@ -16,8 +16,9 @@ class CaptivePortalController extends Controller
 
         $advertisements = Advertisement::join('stores', 'advertisements.store_id', '=', 'stores.id')
                         ->join('locations', 'stores.location_id', '=', 'locations.id')
-                        ->select('stores.company_name', 'advertisements.offer', 'advertisements.expiry_date', 'advertisements.has_logo', 'advertisements.logo_path')
+                        ->select('stores.company_name', 'advertisements.offer', 'advertisements.expiry_date', 'advertisements.has_logo', 'advertisements.logo_path', 'advertisements.category')
                         ->where('locations.location_name', '=', $location)
+                        ->where('advertisements.expiry_date', '>=', Carbon::now()->toDateTimeString())
                         ->getQuery()
                         ->get();
 

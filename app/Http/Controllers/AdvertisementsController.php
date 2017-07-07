@@ -37,9 +37,9 @@ class AdvertisementsController extends Controller
         $this->validate($request, [
             'store_id' => 'required|max:255',
             'offer' => 'required',
-            'expiry_date' => 'required|date',
             'category' => 'required',
-            'advertisement_logo' => 'required|image',
+            'expiry_date' => 'required|date',
+            'advertisement_logo' => 'required',
         ]);
 
         $advertisement = $request->toArray();

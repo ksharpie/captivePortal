@@ -39,7 +39,11 @@
                       </div>
                       <div class="form-group required">
                         <label for="category" class="control-label">Advertisement Category</label>
-                        <input type="text" class="form-control" id="category" name="category" value="{{ old('category')}}">
+                        <select type="text" class="form-control" id="category" name="category">
+                          <<option value="">Please select advertisement type</option>
+                          <<option value="Picture">Picture</option>
+                          <<option value="Video">Video</option>
+                        </select>
                         <div class="form-text text-muted">@if (array_key_exists('category', $errors->toArray())) {{ $errors->toArray()['category'][0] }} @endif</div>
                       </div>
                       <div class="form-group required">

@@ -31,7 +31,19 @@
         @else
           <div class="item">
         @endif
-          <img style="1000px" src="{{ $advertisements[$count]->logo_path }}" alt="{{ $advertisements[$count]->company_name }}">
+          @if ( strcmp($advertisements[$count]->category, "Picture") == 0)
+              <img src="{{ $advertisements[$count]->logo_path }}" alt="{{ $advertisements[$count]->company_name }}">
+          @else
+            @if ($count == $initialAdvertisement)
+              <video autoplay loop>
+            @else
+              <video>
+            @endif
+              <source src="{{ $advertisements[$count]->logo_path }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+          @endif
+
           <div class="carousel-caption">
             <h3>{{ $advertisements[$count]->company_name }}</h3>
             <p>{{ $advertisements[$count]->offer}} <br/> Offer Expires in {{ $advertisements[$count]->expires_in}}</p>
@@ -52,14 +64,32 @@
      <a href="{{ $clickThroughURL }}"><button type="button" class="btn btn-primary">Login</button></a>
   </div>
 </div>
-
 </body>
 </html>
+
+<script>
+  $('#myCarousel').bind('slide.bs.carousel', function (e) {
+    function delayedResponse() {
+      $('video').each(function(index) {
+        $(this).replaceWith( "<video>" + $(this).html() + "</video>" );
+      });
+
+      $('.item.active').find('video').replaceWith( "<video autoplay loop>" + $('.item.active').find('video').html() + "</video>" );
+    }
+
+    setTimeout(delayedResponse,605);
+  });
+</script>
+
 <style>
   html,body{
     height:100%;
   }
   .carousel-inner > .item > img {
+    width: 100vw;
+    height: 100vh;
+  }
+  .carousel-inner > .item > video {
     width: 100vw;
     height: 100vh;
   }
@@ -83,11 +113,4 @@
     padding-right: 40px;
     padding-top: 40px;
 }
-
-  @media (max-width: 767px) {
-  	body {
-  		padding-left: 0;
-  		padding-right: 0;
-  	}
-  }
 </style>
