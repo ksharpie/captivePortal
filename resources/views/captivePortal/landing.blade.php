@@ -31,7 +31,7 @@
         @else
           <div class="item">
         @endif
-          <img style="1000px" src="{{ $advertisements[$count]->logo_path }}" alt="Los Angeles">
+          <img style="1000px" src="{{ $advertisements[$count]->logo_path }}" alt="{{ $advertisements[$count]->company_name }}">
           <div class="carousel-caption">
             <h3>{{ $advertisements[$count]->company_name }}</h3>
             <p>{{ $advertisements[$count]->offer}} {{ $advertisements[$count]->expiry_date}}</p>
