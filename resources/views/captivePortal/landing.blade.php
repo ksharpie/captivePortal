@@ -200,7 +200,6 @@
 
 <script>
 
-
   $( document ).ready(function() {
     $('#myCarousel').bind('slide.bs.carousel', function (e) {
       function delayedResponse() {
