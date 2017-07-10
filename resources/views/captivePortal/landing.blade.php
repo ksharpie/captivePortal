@@ -23,7 +23,7 @@
 <body>
 
 <div class="container fill">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="10000">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       @for ($count=0; $count < count($advertisements) ; $count++)
