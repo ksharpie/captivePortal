@@ -23,7 +23,7 @@
 <body>
 
 <div class="container fill">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="10000">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="15000">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       @for ($count=0; $count < count($advertisements) ; $count++)
@@ -47,7 +47,7 @@
               <img src="{{ $advertisements[$count]->logo_path }}" alt="{{ $advertisements[$count]->company_name }}">
           @else
             @if ($count == $initialAdvertisement)
-              <video autoplay loop muted>
+              <video autoplay loop>
             @else
               <video>
             @endif
@@ -207,7 +207,7 @@
           $(this).replaceWith( "<video>" + $(this).html() + "</video>" );
         });
 
-        $('.item.active').find('video').replaceWith( "<video autoplay loop muted>" + $('.item.active').find('video').html() + "</video>" );
+        $('.item.active').find('video').replaceWith( "<video autoplay loop>" + $('.item.active').find('video').html() + "</video>" );
       }
 
       setTimeout(delayedResponse,605);
