@@ -73,7 +73,50 @@
     </a>
   </div>
   <div id="fixedbutton">
-     <a href="{{ $clickThroughURL }}"><button type="button" class="btn btn-primary">Login</button></a>
+     {{-- <a href="{{ $clickThroughURL }}"> --}}
+       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Login</button>
+     {{-- </a> --}}
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form" class="form-horizontal">
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">
+                Email
+              </label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="Email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-sm-2 control-label">
+                Password
+              </label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" placeholder="Password"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary btn-sm"> Sign In </button>
+                  {{-- <a href="javascript:;">Forgot your password?</a> --}}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </body>
@@ -106,11 +149,31 @@
   }
   #fixedbutton {
     position: fixed;
-    top: 0px;
+    bottom: 0px;
     right: 0px;
     padding-right: 40px;
-    padding-top: 40px;
-}
+    padding-bottom: 40px;
+  }
+
+  .modal {
+    text-align: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    .modal:before {
+      display: inline-block;
+      vertical-align: middle;
+      content: " ";
+      height: 100%;
+    }
+  }
+
+  .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
+
 </style>
 
 <script>
