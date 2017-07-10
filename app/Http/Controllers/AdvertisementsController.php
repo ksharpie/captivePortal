@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use App\Advertisement;
 use App\Store;
 use Auth;
@@ -71,6 +72,11 @@ class AdvertisementsController extends Controller
     }
 
     public function delete(Advertisement $advertisement){
+        if ( Storage::disk('azure')->exists( $advertisement->logo_path) )
+        {
+          Storage::disk('azure')->delete($advertisement->logo_path);
+        }
+
         $advertisement->delete();
 
         return $this->index();

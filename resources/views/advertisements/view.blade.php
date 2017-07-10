@@ -46,7 +46,7 @@
                       </div>
                       @if($advertisement->has_logo)
                         <div class="form-group">
-                          <label for="website">Advertisement Logo</label><br/>
+                          <label for="website">Advertisement {{ $advertisement->category }}</label><br/>
                           @if ($advertisement->category == "Picture")
                             <image src="{{$advertisement->logo_path}}" class="img-thumbnail" style="height:200px; width:200px;"></image>
                           @else
