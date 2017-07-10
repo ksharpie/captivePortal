@@ -121,15 +121,19 @@
 </script>
 
 <script>
-  $('#myCarousel').bind('slide.bs.carousel', function (e) {
-    function delayedResponse() {
-      $('video').each(function(index) {
-        $(this).replaceWith( "<video>" + $(this).html() + "</video>" );
-      });
 
-      $('.item.active').find('video').replaceWith( "<video autoplay loop>" + $('.item.active').find('video').html() + "</video>" );
-    }
+  $( document ).ready(function() {
+    $('#myCarousel').bind('slide.bs.carousel', function (e) {
+      function delayedResponse() {
+        $('video').each(function(index) {
+          $(this).replaceWith( "<video>" + $(this).html() + "</video>" );
+        });
 
-    setTimeout(delayedResponse,605);
+        $('.item.active').find('video').replaceWith( "<video autoplay loop>" + $('.item.active').find('video').html() + "</video>" );
+      }
+
+      setTimeout(delayedResponse,605);
+    });
   });
+
 </script>
