@@ -37,7 +37,5 @@ class CaptivePortalController extends Controller
         $clickThroughURL = $base_grant_url . "?continue_url=" . $user_continue_url . "&duration=3600";
 
         return view('captivePortal.landing', compact('advertisements', 'initialAdvertisement', 'clickThroughURL'));
-        // return $clickThroughURL;
-        // return $data;
     }
 }

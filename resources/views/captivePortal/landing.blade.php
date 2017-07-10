@@ -90,12 +90,18 @@
         </div>
         <div class="modal-body">
           <form role="form" class="form-horizontal">
+
+            <div class="form-group" style="display: none;">
+              <div class="col-sm-10">
+                <input type=”hidden” name=”success_url” value=”http://www.example.com/success/” />
+              </div>
+            </div>
             <div class="form-group">
-              <label for="email" class="col-sm-2 control-label">
-                Email
+              <label for="username" class="col-sm-2 control-label">
+                Username
               </label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" placeholder="Email" />
+                <input type="text" class="form-control" id="username" placeholder="username" />
               </div>
             </div>
             <div class="form-group">
@@ -110,7 +116,6 @@
               <div class="col-sm-2"></div>
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary btn-sm"> Sign In </button>
-                  {{-- <a href="javascript:;">Forgot your password?</a> --}}
               </div>
             </div>
           </form>

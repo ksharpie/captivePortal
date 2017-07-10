@@ -47,7 +47,14 @@
                       @if($advertisement->has_logo)
                         <div class="form-group">
                           <label for="website">Advertisement Logo</label><br/>
-                          {{-- <image src="{{$advertisement->logo_path}}" class="img-thumbnail" style="height:200px; width:200px;"></image> --}}
+                          @if ($advertisement->category == "Picture")
+                            <image src="{{$advertisement->logo_path}}" class="img-thumbnail" style="height:200px; width:200px;"></image>
+                          @else
+                            <video autoplay loop style="height:200px; width:200px;">
+                              <source src="{{ $advertisement->logo_path }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                          @endif
                         </div>
                       @endif
                       <button type="submit" class="btn btn-primary">Save Changes</button>
