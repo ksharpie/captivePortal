@@ -47,7 +47,7 @@
               <img src="{{ $advertisements[$count]->logo_path }}" alt="{{ $advertisements[$count]->company_name }}">
           @else
             @if ($count == $initialAdvertisement)
-              <video autoplay loop>
+              <video muted>
             @else
               <video>
             @endif
@@ -207,7 +207,7 @@
           $(this).replaceWith( "<video>" + $(this).html() + "</video>" );
         });
 
-        $('.item.active').find('video').replaceWith( "<video autoplay loop>" + $('.item.active').find('video').html() + "</video>" );
+        $('.item.active').find('video').replaceWith( "<video muted>" + $('.item.active').find('video').html() + "</video>" );
       }
 
       setTimeout(delayedResponse,605);
